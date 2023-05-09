@@ -1,6 +1,5 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
-      // mysql = require('pg-hstore'),
       dbaController = require("./controllers/dba.controller"),
       auth= require("./controllers/auth.controller.js"),
       multer = require('multer'),

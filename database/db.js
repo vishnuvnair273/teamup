@@ -1,8 +1,7 @@
 const {Sequelize,DataTypes} = require("sequelize");
 
-const sequelize = new Sequelize('team_up','root','09032002',{
-    dialect : 'mysql',
-    host : 'localhost'
+const sequelize = new Sequelize('team_up','postgres','09032002',{
+    dialect : 'postgres',
 })
 
 sequelize.authenticate().then(() => {

@@ -18,8 +18,8 @@ module.exports ={
         if (user) {
           let jwtSecretKey = process.env.JWT_SECRET_KEY;
           let data = {
-              time: Date(),
-              userId: 12}
+              time: Date().toString().substring (0,1),
+              userId: 1 .toString()}
           const token = jwt.sign(data, jwtSecretKey);
           
           let session = model.modelDef['session'];

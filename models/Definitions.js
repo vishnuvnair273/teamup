@@ -9,6 +9,7 @@ const session = require("./Session")
 const brand = require("./Brands");
 const interest = require("./Interest");
 const profile = require("./Profile");
+const team = require("./team");
 const sensitiveTables = ["user","doctor"];
 
 const tableID = {
@@ -22,7 +23,8 @@ const tableID = {
   "brand" : 161,
   "session" : 171,
   "interest": 181,
-  "profile": 191
+  "profile": 191,
+  "team": 201,
 }
 
 
@@ -118,6 +120,14 @@ const profileSQLDef = db.sequelize.define(
     timestamps : false
   }
 )
+const teamSQLDef = db.sequelize.define(
+  'team',
+  team.model,
+  {
+    tableName : "team",
+    timestamps : false
+  }
+)
 
 const modelDef = {
   "user": userSQLDef,
@@ -130,6 +140,7 @@ const modelDef = {
   "brand" : brandSQLDef,
   "interest": interestSQLDef,
   "profile": profileSQLDef,
+  "team": teamSQLDef,
 }
 
 module.exports = { modelDef ,sensitiveTables,tableID}
