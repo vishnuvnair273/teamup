@@ -13,6 +13,8 @@ const teamMembership = require("./teamMembership");
 const teamCreate = require("./teamCreate");
 const teamMember = require("./teamMember");
 const sensitiveTables = ["user","doctor"];
+const post = require("./Post");
+const event = require("./events");
 
 const tableID = {
   "user": 110,
@@ -22,6 +24,8 @@ const tableID = {
   "teamMember": 114,
   "teamCreate": 115,
   "otp" : 121,
+  "post":123,
+  "events":126,
   "audit" : 131,
   "advertisement" : 141,
   "content" : 151,
@@ -147,7 +151,20 @@ const teamCreateSQLDef = db.sequelize.define(
     timestamps : false
   }
 )
-
+const postSQLDef = db.sequelize.define(
+  'post',
+  post.model,{
+    tableName : "post",
+    timestamps : false
+  }
+)
+const eventSQLDef = db.sequelize.define(
+  'event',
+  event.model,{
+    tableName : "event",
+    timestamps : false
+  }
+)
 const modelDef = {
   "user": userSQLDef,
   "doctor" : doctorSQLDef,
@@ -162,6 +179,8 @@ const modelDef = {
   "teamCreate" : teamCreateSQLDef,
   "teamMember" : teamMemberSQLDef,
   "teamMembership": teamMembershipSQLDef,
+  "post" : postSQLDef,
+  "event": eventSQLDef,
 }
 
 module.exports = { modelDef ,sensitiveTables,tableID}
