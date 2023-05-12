@@ -1,6 +1,6 @@
 const {Sequelize,DataTypes} = require("sequelize");
 
-const sequelize = new Sequelize('team_up','postgres','09032002',{
+const sequelize = new Sequelize('team_up','postgres','1234',{
     dialect : 'postgres',
 })
 
@@ -10,6 +10,6 @@ sequelize.authenticate().then(() => {
     console.log("Error : "+ err)
 });
 
-sequelize.sync({alter:true})
+sequelize.sync()
 module.exports.sequelize = sequelize;
 

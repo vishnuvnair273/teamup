@@ -9,13 +9,18 @@ const session = require("./Session")
 const brand = require("./Brands");
 const interest = require("./Interest");
 const profile = require("./Profile");
-const team = require("./team");
+const teamMembership = require("./teamMembership");
+const teamCreate = require("./teamCreate");
+const teamMember = require("./teamMember");
 const sensitiveTables = ["user","doctor"];
 
 const tableID = {
   "user": 110,
   "doctor" : 111,
   "session":112,
+  "teamMembership": 113,
+  "teamMember": 114,
+  "teamCreate": 115,
   "otp" : 121,
   "audit" : 131,
   "advertisement" : 141,
@@ -23,8 +28,7 @@ const tableID = {
   "brand" : 161,
   "session" : 171,
   "interest": 181,
-  "profile": 191,
-  "team": 201,
+  "profile": 191
 }
 
 
@@ -45,7 +49,6 @@ const doctorSQLDef = db.sequelize.define(
     timestamps: false
   }
 )
-
 
 const sessionSQLDef = db.sequelize.define(
   'session',
@@ -120,11 +123,27 @@ const profileSQLDef = db.sequelize.define(
     timestamps : false
   }
 )
-const teamSQLDef = db.sequelize.define(
-  'team',
-  team.model,
+const teamMembershipSQLDef = db.sequelize.define(
+  'teamMembership',
+  teamMembership.model,
   {
-    tableName : "team",
+    tableName : "teamMembership",
+    timestamps : false
+  }
+)
+const teamMemberSQLDef = db.sequelize.define(
+  'teamMember',
+  teamMember.model,
+  {
+    tableName : "teamMember",
+    timestamps : false
+  }
+)
+const teamCreateSQLDef = db.sequelize.define(
+  'teamCreate',
+  teamCreate.model,
+  {
+    tableName : "teamCreate",
     timestamps : false
   }
 )
@@ -140,7 +159,9 @@ const modelDef = {
   "brand" : brandSQLDef,
   "interest": interestSQLDef,
   "profile": profileSQLDef,
-  "team": teamSQLDef,
+  "teamCreate" : teamCreateSQLDef,
+  "teamMember" : teamMemberSQLDef,
+  "teamMembership": teamMembershipSQLDef,
 }
 
 module.exports = { modelDef ,sensitiveTables,tableID}

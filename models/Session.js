@@ -7,7 +7,7 @@ const model = {
     type : Sequelize.STRING,
     primaryKey: true
   },
- 
+
   tokenId: {
     type : Sequelize.STRING,
     unique: true,

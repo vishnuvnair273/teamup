@@ -11,8 +11,7 @@ const model = {
   team_name: {
     type: Sequelize.STRING,
     allownull:false,
-    
-    
+     
   },
 
   created_by: {
